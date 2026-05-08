@@ -1,0 +1,37 @@
+# [Web Framework]
+fastapi
+uvicorn[standard]
+
+# [Environment & Config]
+pydantic
+pydantic-settings
+python-dotenv
+requests
+pandas
+
+# Google Auth & Token Verification
+google-auth==2.29.0
+
+# JWT (JSON Web Token) Implementation
+PyJWT==2.8.0 # 2.12.1
+
+# [Database]
+sqlalchemy
+psycopg2-binary
+pgvector
+
+# [AI & Data]
+openai
+python-multipart
+torch
+transformers
+scikit-learn
+pymupdf
+sentence_transformers
+
+langchain>=0.1.0
+langchain-community
+langchain-text-splitters
+
+# [API]
+google-genai

@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  # Antidote Hybrid Database (SQL + Vector)
+  antidote-db:
+    image: ankane/pgvector:latest
+    container_name: antidote_hybrid_db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - ./db/postgres_data:/var/lib/postgresql/data
+    networks:
+      - antidote-network
+    restart: always
+
+networks:
+  antidote-network:
+    driver: bridge

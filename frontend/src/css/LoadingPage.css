@@ -1,0 +1,468 @@
+/* 로딩 페이지 */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-500: #3b82f6;
+  --color-blue-100: #dbeafe;
+  --color-blue-50: #eff6ff;
+
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+  --color-slate-50: #f8fafc;
+
+  --color-white: #ffffff;
+  --color-green-600: #16a34a;
+
+  --transition-base: all 0.3s ease;
+}
+
+/* 기본 스타일 */
+body {
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* MainLayout 안에서 중앙 영역으로만 쓰이는 래퍼 */
+.lp-loading-wrap {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Manrope", sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.lp-loading-wrap.light-mode {
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+  color: var(--color-slate-900);
+}
+
+.lp-loading-wrap.dark-mode {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+  color: var(--color-white);
+}
+
+/* 헤더 */
+.lp-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: var(--transition-base);
+  z-index: 40;
+}
+
+.lp-header.light-mode {
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.lp-header.dark-mode {
+  border-color: var(--color-slate-700);
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.lp-header-content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  gap: 2rem;
+}
+
+/* 로고 */
+.lp-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lp-logo-dot-outer {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  background: #1a73e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-logo-dot-inner {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  background: white;
+}
+
+.lp-logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-600) 0%,
+    var(--color-blue-700) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 다크모드 토글 */
+.lp-dark-toggle {
+  margin-left: auto;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-dark-toggle.light-mode {
+  background: var(--color-blue-100);
+  color: var(--color-blue-600);
+}
+
+.lp-dark-toggle.light-mode:hover {
+  background: var(--color-blue-200);
+}
+
+.lp-dark-toggle.dark-mode {
+  background: var(--color-slate-700);
+  color: #fbbf24;
+}
+
+.lp-dark-toggle.dark-mode:hover {
+  background: var(--color-slate-600);
+}
+
+/* 메인 영역 */
+.lp-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem 1.5rem;
+}
+
+.lp-content {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* 진행률 바 */
+.lp-progress-section {
+  margin-bottom: 3rem;
+}
+
+/* 바 컨테이너 */
+.lp-bar-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* 배경 바 */
+.lp-bar-background {
+  height: 0.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.lp-bar-background.light-mode {
+  background: var(--color-slate-200);
+}
+
+.lp-bar-background.dark-mode {
+  background: var(--color-slate-700);
+}
+
+/* 진행 바 */
+.lp-bar-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-blue-500) 0%,
+    var(--color-blue-600) 100%
+  );
+  border-radius: 9999px;
+  transition: width 0.5s ease-out;
+}
+
+/* 진행률 */
+.lp-progress-text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.lp-progress-text.in-progress {
+  color: var(--color-blue-600);
+}
+
+.lp-progress-text.complete {
+  color: var(--color-green-600);
+}
+
+/* 현재 단계 */
+.lp-current-step {
+  margin-bottom: 2rem;
+}
+
+.lp-step-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.lp-step-message {
+  font-size: 1.125rem;
+}
+
+.lp-step-message.light-mode {
+  color: var(--color-slate-600);
+}
+
+.lp-step-message.dark-mode {
+  color: var(--color-slate-400);
+}
+
+/* 단계 타임라인 */
+.lp-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.lp-step-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 단계 표시 */
+.lp-step-indicator {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: var(--transition-base);
+  font-size: 0.875rem;
+}
+
+.lp-step-indicator.completed {
+  background: linear-gradient(
+    135deg,
+    var(--color-blue-600) 0%,
+    var(--color-blue-700) 100%
+  );
+  color: var(--color-white);
+}
+
+.lp-step-indicator.pending.light-mode {
+  background: var(--color-slate-200);
+  color: var(--color-slate-500);
+}
+
+.lp-step-indicator.pending.dark-mode {
+  background: var(--color-slate-700);
+  color: var(--color-slate-400);
+}
+
+/* 단계 이름 */
+.lp-step-label-section {
+  flex: 1;
+  text-align: left;
+}
+
+.lp-step-label {
+  font-weight: 600;
+  transition: color 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.lp-step-label.completed {
+  color: var(--color-blue-600);
+}
+
+.lp-step-label.pending.light-mode {
+  color: var(--color-slate-500);
+}
+
+.lp-step-label.pending.dark-mode {
+  color: var(--color-slate-400);
+}
+
+/* 단계 비율 */
+.lp-step-progress {
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.lp-step-progress.completed {
+  color: var(--color-blue-600);
+  font-weight: 600;
+}
+
+.lp-step-progress.pending.light-mode {
+  color: var(--color-slate-400);
+}
+
+.lp-step-progress.pending.dark-mode {
+  color: var(--color-slate-500);
+}
+
+/* 로딩 애니메이션 */
+.lp-animation {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.lp-dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-blue-600);
+  animation: lp-pulse 1.4s infinite;
+}
+
+.lp-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.lp-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes lp-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 취소 버튼 */
+.lp-cancel-btn {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+}
+.lp-cancel-btn.light-mode {
+  background: white;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+.lp-cancel-btn.light-mode:hover {
+  border-color: #dc2626;
+  color: #dc2626;
+  background: #fff5f5;
+}
+.lp-cancel-btn.dark-mode {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+}
+.lp-cancel-btn.dark-mode:hover {
+  border-color: #f87171;
+  color: #f87171;
+  background: rgba(220, 38, 38, 0.08);
+}
+
+/* 반응형 */
+@media (max-width: 640px) {
+  .lp-main {
+    padding: 3rem 1rem 1rem;
+  }
+
+  .lp-content {
+    max-width: 100%;
+  }
+
+  .lp-main-title {
+    font-size: 1.5rem;
+  }
+
+  .lp-step-title {
+    font-size: 1.25rem;
+  }
+
+  .lp-step-message {
+    font-size: 0.875rem;
+  }
+
+  .lp-step-item {
+    flex-wrap: wrap;
+  }
+
+  .lp-step-label-section {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .lp-step-progress {
+    text-align: center;
+  }
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate-300);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-400);
+}

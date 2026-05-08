@@ -1,0 +1,918 @@
+/* ResultContent - 2페이지 결과 리포트 */
+
+.rc-wrap {
+  min-height: 100%;
+  padding: 2rem;
+}
+.rc-wrap.light-mode {
+  background: #f8fafc;
+}
+.rc-wrap.dark-mode {
+  background: #0f172a;
+}
+
+/* 레이아웃: 좌측 메인 + 우측 고정 패널 */
+.rc-layout {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* ─── 좌측 메인 ─── */
+.rc-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* 리포트 헤더 */
+.rc-report-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* PDF 저장 버튼 */
+.rc-pdf-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.rc-pdf-btn.light-mode {
+  background: white;
+  border-color: #e2e8f0;
+  color: #334155;
+}
+.rc-pdf-btn.light-mode:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #1a73e8;
+  color: #1a73e8;
+}
+.rc-pdf-btn.dark-mode {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+}
+.rc-pdf-btn.dark-mode:hover:not(:disabled) {
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+.rc-pdf-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.rc-report-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #1a73e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rc-logo-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: white;
+}
+.rc-report-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+.rc-report-title.light-mode {
+  color: #0f172a;
+}
+.rc-report-title.dark-mode {
+  color: #f1f5f9;
+}
+.rc-report-date {
+  font-size: 0.8125rem;
+  margin: 0.125rem 0 0;
+}
+.rc-report-date.light-mode {
+  color: #94a3b8;
+}
+.rc-report-date.dark-mode {
+  color: #64748b;
+}
+
+/* 섹션 카드 */
+.rc-section {
+  border-radius: 0.875rem;
+  border: 1px solid;
+  padding: 1.25rem;
+}
+.rc-section.light-mode {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.rc-section.dark-mode {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* 섹션 헤더: 번호 + 뱃지 */
+.rc-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.875rem;
+}
+
+.rc-section-num {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #1a73e8;
+}
+
+/* 위험 레벨 뱃지 래퍼 (뱃지 + 점수) */
+.rc-level-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+/* 위험 레벨 뱃지 */
+.rc-level-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+/* 뱃지 옆 점수 */
+.rc-level-score {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.rc-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.rc-section-label.general {
+  color: #6366f1;
+}
+
+/* 원문 박스 */
+.rc-clause-box {
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  border-left: 3px solid #67a5f7;
+  margin-bottom: 1rem;
+}
+.rc-clause-box.light-mode {
+  background: #f8fafc;
+}
+.rc-clause-box.dark-mode {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rc-clause-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0 0 0.375rem;
+}
+.rc-clause-label.light-mode {
+  color: #94a3b8;
+}
+.rc-clause-label.dark-mode {
+  color: #64748b;
+}
+
+.rc-clause-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+.rc-clause-text.light-mode {
+  color: #334155;
+}
+.rc-clause-text.dark-mode {
+  color: #cbd5e1;
+}
+
+/* 일반 답변 박스 */
+.rc-answer-box {
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.rc-answer-box.light-mode {
+  background: #f1f5f9;
+}
+.rc-answer-box.dark-mode {
+  background: rgba(255, 255, 255, 0.04);
+}
+.rc-answer-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+.rc-answer-text.light-mode {
+  color: #334155;
+}
+.rc-answer-text.dark-mode {
+  color: #cbd5e1;
+}
+
+/* 위험 박스 */
+.rc-danger-box {
+  border-radius: 0.625rem;
+  border: 1px solid;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+.rc-danger-box.light-mode {
+  background: #fff8f8;
+  border-color: #fecaca;
+}
+.rc-danger-box.dark-mode {
+  background: rgba(220, 38, 38, 0.06);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+.rc-danger-header {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+.rc-danger-icon {
+  font-size: 1rem;
+}
+.rc-danger-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+/* 안전 박스 */
+.rc-safe-box {
+  border-radius: 0.625rem;
+  border: 1px solid;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+.rc-safe-box.light-mode {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.rc-safe-box.dark-mode {
+  background: rgba(34, 197, 94, 0.06);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+.rc-safe-header {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+.rc-safe-icon {
+  font-size: 1rem;
+}
+.rc-safe-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* 판단 근거 */
+.rc-reason-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+.rc-reason-text.light-mode {
+  color: #334155;
+}
+.rc-reason-text.dark-mode {
+  color: #cbd5e1;
+}
+
+/* 법령/판례 박스 */
+.rc-evidence-box {
+  margin-top: 0.875rem;
+  padding: 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+}
+.rc-evidence-box.light-mode {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+.rc-evidence-box.dark-mode {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.rc-evidence-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #6366f1;
+  margin-bottom: 0.625rem;
+}
+.rc-evidence-item {
+  margin-bottom: 0.75rem;
+}
+.rc-evidence-item:last-child {
+  margin-bottom: 0;
+}
+.rc-evidence-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: #1a73e8;
+}
+.rc-evidence-content {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.rc-evidence-content.light-mode {
+  color: #475569;
+}
+.rc-evidence-content.dark-mode {
+  color: #94a3b8;
+}
+
+/* 추천 조항 */
+.rc-proposed-box {
+  margin-top: 0.875rem;
+  padding: 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+}
+.rc-proposed-box.light-mode {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.rc-proposed-box.dark-mode {
+  background: rgba(34, 197, 94, 0.05);
+  border-color: rgba(34, 197, 94, 0.15);
+}
+.rc-proposed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+.rc-copy-btn {
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.rc-copy-btn.light-mode {
+  background: white;
+  border-color: #bbf7d0;
+  color: #16a34a;
+}
+.rc-copy-btn.light-mode:hover {
+  background: #dcfce7;
+}
+.rc-copy-btn.dark-mode {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+.rc-proposed-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.rc-proposed-text.light-mode {
+  color: #166534;
+}
+.rc-proposed-text.dark-mode {
+  color: #86efac;
+}
+
+/* 태그 */
+.rc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+}
+.rc-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+}
+.rc-tag.light-mode {
+  background: rgba(26, 115, 232, 0.08);
+  color: #1e40af;
+}
+.rc-tag.dark-mode {
+  background: rgba(26, 115, 232, 0.15);
+  color: #93c5fd;
+}
+
+/* ─── 우측 고정 패널 ─── */
+.rc-right-panel {
+  width: 300px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+/* 위험도 카드 */
+.rc-risk-card {
+  border-radius: 0.875rem;
+  border: 1px solid;
+  padding: 1.25rem;
+}
+.rc-right-panel.light-mode .rc-risk-card {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.rc-right-panel.dark-mode .rc-risk-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* 누락항목 카드 */
+.rc-missing-card {
+  border-radius: 0.875rem;
+  border: 1px solid;
+  padding: 1.25rem;
+}
+.rc-missing-card.light-mode {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.rc-missing-card.dark-mode {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* SAFE ↔ DANGER 바 */
+.rc-risk-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.rc-bar-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.rc-bar-label.light-mode {
+  color: #94a3b8;
+}
+.rc-bar-label.dark-mode {
+  color: #64748b;
+}
+
+.rc-risk-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 9999px;
+  background: #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+.rc-right-panel.dark-mode .rc-risk-bar {
+  background: #334155;
+}
+.rc-risk-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 9999px;
+  transition: width 0.6s ease, background-color 0.4s ease;
+}
+
+/* 점수 */
+.rc-score-wrap {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.rc-score-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  display: block;
+  letter-spacing: -0.02em;
+}
+.rc-score-desc {
+  font-size: 0.8125rem;
+  margin: 0.25rem 0 0;
+}
+.rc-score-desc.light-mode {
+  color: #64748b;
+}
+.rc-score-desc.dark-mode {
+  color: #94a3b8;
+}
+
+/* 다수 조항 평균 뱃지 */
+.rc-avg-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
+}
+
+/* 평균 부연 설명 */
+.rc-avg-note {
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+  opacity: 0.75;
+}
+.rc-avg-note.light-mode {
+  color: #64748b;
+}
+.rc-avg-note.dark-mode {
+  color: #94a3b8;
+}
+
+/* 위험도 가이드 */
+.rc-risk-guide {
+  border-top: 1px solid;
+  padding-top: 0.875rem;
+}
+.rc-risk-guide.light-mode {
+  border-color: #f1f5f9;
+}
+.rc-risk-guide.dark-mode {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.rc-guide-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 0 0 0.625rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rc-guide-row {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0;
+  gap: 0.375rem;
+}
+.rc-guide-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+/* dot 없는 비활성 행도 동일 좌측 여백 */
+.rc-guide-row:not(.active) {
+  padding-left: calc(0.5rem + 0.375rem);
+}
+.rc-guide-label-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+.rc-guide-label {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+.rc-guide-label.light-mode {
+  color: #64748b;
+}
+.rc-guide-label.dark-mode {
+  color: #94a3b8;
+}
+.rc-guide-label.active {
+  font-weight: 700;
+}
+.rc-guide-desc {
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+.rc-guide-desc.light-mode {
+  color: #94a3b8;
+}
+.rc-guide-desc.dark-mode {
+  color: #64748b;
+}
+.rc-guide-desc.active {
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.rc-guide-range {
+  font-size: 0.75rem;
+}
+.rc-guide-range.light-mode {
+  color: #94a3b8;
+}
+.rc-guide-range.dark-mode {
+  color: #64748b;
+}
+
+/* ─── 세그먼트 가이드 (2개+ 조항) ─── */
+
+/* 칩 행 */
+.rc-segment-bar {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.625rem;
+}
+
+.rc-segment-chip {
+  flex: 1;
+  text-align: center;
+  padding: 0.28rem 0.15rem;
+  border-radius: 0.375rem;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s;
+}
+
+/* 활성 칩: 레벨 색상 배경 + 흰 글씨 */
+.rc-segment-chip.active {
+  color: #ffffff;
+}
+
+/* 비활성 칩 */
+.rc-segment-chip:not(.active).light-mode {
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+.rc-segment-chip:not(.active).dark-mode {
+  background: #334155;
+  color: #64748b;
+}
+
+/* 현재 단계 상세 카드 */
+.rc-segment-card {
+  border-radius: 0.5rem;
+  border: 1px solid;
+  border-left-width: 3px;
+  padding: 0.6rem 0.75rem;
+  transition: border-left-color 0.3s ease;
+}
+.rc-segment-card.light-mode {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+.rc-segment-card.dark-mode {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.rc-segment-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.25rem;
+}
+
+.rc-segment-card-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.rc-segment-card-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.rc-segment-card-range {
+  font-size: 0.725rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.rc-segment-card-range.light-mode {
+  color: #94a3b8;
+}
+.rc-segment-card-range.dark-mode {
+  color: #64748b;
+}
+
+.rc-segment-card-desc {
+  font-size: 0.775rem;
+  line-height: 1.4;
+  margin: 0;
+  padding-left: 0.875rem;
+}
+.rc-segment-card-desc.light-mode {
+  color: #64748b;
+}
+.rc-segment-card-desc.dark-mode {
+  color: #94a3b8;
+}
+
+/* 조항별 위험도 차트 카드 */
+.rc-chart-card {
+  border-radius: 0.875rem;
+  border: 1px solid;
+  padding: 1rem 1rem 0.5rem;
+}
+.rc-chart-card.light-mode {
+  background: white;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.rc-chart-card.dark-mode {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.rc-chart-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.5rem;
+}
+
+/* 누락항목 바디 */
+.rc-missing-body {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #fffbeb;
+  border-left: 3px solid #f59e0b;
+}
+.rc-right-panel.dark-mode .rc-missing-body {
+  background: rgba(245, 158, 11, 0.08);
+}
+.rc-missing-warning {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #d97706;
+  margin: 0 0 0.375rem;
+}
+.rc-missing-text {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.rc-missing-text.light-mode {
+  color: #000000;
+}
+.rc-missing-text.dark-mode {
+  color: #fbbf24;
+}
+
+/* 로딩 */
+.rc-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  font-size: 0.9375rem;
+}
+.rc-loading.light-mode {
+  color: #475569;
+}
+.rc-loading.dark-mode {
+  color: #94a3b8;
+}
+.rc-loading-dots {
+  display: flex;
+  gap: 0.375rem;
+}
+.rc-loading-dots div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1a73e8;
+  animation: rcBounce 1.4s infinite;
+}
+.rc-loading-dots div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.rc-loading-dots div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes rcBounce {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+/* 빈 상태 */
+.rc-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  text-align: center;
+}
+.rc-empty.light-mode {
+  color: #475569;
+}
+.rc-empty.dark-mode {
+  color: #94a3b8;
+}
+.rc-empty-icon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+.rc-empty-text {
+  font-size: 1rem;
+}
+.rc-empty-subtitle {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+.rc-empty-subtitle.light-mode {
+  color: #64748b;
+}
+.rc-empty-subtitle.dark-mode {
+  color: #94a3b8;
+}
+.rc-empty-btn {
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  background: #1a73e8;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+.rc-empty-btn:hover {
+  background: #1565c0;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .rc-layout {
+    flex-direction: column;
+  }
+  .rc-right-panel {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+  .rc-wrap {
+    padding: 1rem;
+  }
+}

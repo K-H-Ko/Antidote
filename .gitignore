@@ -1,0 +1,28 @@
+# [Python]
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# [Environment Variables] - 절대 공유 금지
+.env
+app/.env
+
+# [Database] - 로컬 DB 데이터는 제외
+app/db/postgres_data/
+
+# [Model]
+app/models/
+
+app/node_modules
+model_data/Law_Data/false_data(오탐데이터)
+model_data/model
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(1차)
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(2차)
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(3차)
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(4차)
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(5차)
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(6차)
+model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(7차)
