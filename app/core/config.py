@@ -43,8 +43,8 @@ class Settings(BaseSettings):
 
     # [5] Vector Dimensions
     BGE_M3_DIMENSION: int = 1024
-    KOELECTRA_BASE_DIMENSION: int = 768
-    KOELECTRA_SMALL_DIMENSION: int = 512
+    RoBERTa_BASE_DIMENSION: int = 768
+    koELECTRA_SMALL_DIMENSION: int = 512
     
     # 파이프라인 하위 호환성을 위한 기본 차원
     VECTOR_DIMENSION: int = 1024
