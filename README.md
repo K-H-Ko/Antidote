@@ -1,4 +1,10 @@
-# 🛡️ Antidote: AI-Powered Legal Analysis & Risk Detection
+# 🛡️ Antidote - AI 기반 근로계약 보호 시스템 <br>(AI-Powered Legal Analysis & Risk Detection)
+
+<br>
+<video src="document/시연영상_AI_근로계약_보호시스템.mp4" width="100%" controls autoplay muted loop>
+  브라우저가 비디오 태그를 지원하지 않습니다.
+</video>
+<br><br>
 
 **Antidote**는 근로계약서 내의 잠재적 리스크를 탐지하고, 공신력 있는 법령 및 판례 데이터를 근거로 제시하는 **지능형 법률 보조 솔루션**입니다. 단순한 텍스트 추출을 넘어, 다단계 AI 추론 파이프라인을 통해 사용자의 권리를 보호합니다.
 
