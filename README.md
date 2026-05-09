@@ -1,7 +1,7 @@
 # 🛡️ Antidote - AI 기반 근로계약 보호 시스템 <br>(AI-Powered Legal Analysis & Risk Detection)
 
 <br>
-<video src="document/시연영상_AI_근로계약_보호시스템.mp4" width="100%" controls autoplay muted loop>
+<video src="https://github.com/K-H-Ko/Antidote/raw/main/document/시연영상_AI_근로계약_보호시스템.mp4" width="100%" controls autoplay muted loop>
   브라우저가 비디오 태그를 지원하지 않습니다.
 </video>
 <br><br>
