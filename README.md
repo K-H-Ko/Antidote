@@ -1,11 +1,5 @@
 # 🛡️ Antidote - AI 기반 근로계약 보호 시스템 <br>(AI-Powered Legal Analysis & Risk Detection)
 
-<br>
-<video src="https://github.com/K-H-Ko/Antidote/raw/main/document/시연영상_AI_근로계약_보호시스템.mp4" width="100%" controls autoplay muted loop>
-  브라우저가 비디오 태그를 지원하지 않습니다.
-</video>
-<br><br>
-
 **Antidote**는 근로계약서 내의 잠재적 리스크를 탐지하고, 공신력 있는 법령 및 판례 데이터를 근거로 제시하는 **지능형 법률 보조 솔루션**입니다. 단순한 텍스트 추출을 넘어, 다단계 AI 추론 파이프라인을 통해 사용자의 권리를 보호합니다.
 
 ---
@@ -53,19 +47,24 @@ Antidote/
 │   ├── schemas/              # Pydantic 모델 (Request/Response 타입)
 │   ├── scripts/              # 유틸리티 스크립트 및 데이터 전처리
 │   ├── services/             # 법률 분석(Analyzer), 검색 로직
-│   └── venv(생략)/           # 가상 환경 (Python Virtual Environment)
+│   ├── venv(생략)/           # 가상 환경 (Python Virtual Environment)
+│   ├── .env(생략)                # 환경 변수 설정 파일 (보안 주의)
+│   ├── .env.sample               # 환경 변수 샘플 양식
+│   ├── backend_guide.md          # 백엔드 설명 문서
+│   ├── docker-compose.yml        # Docker 컨테이너 설정
+│   ├── lifecycle.py              # 앱 생명주기 관리 (Startup/Shutdown)
+│   ├── main.py                   # FastAPI 앱 실행 진입점
+│   ├── README.md                 # 백엔드 시작 가이드
+│   ├── requirements.txt          # 백엔드 라이브러리 의존성 목록
 ├── document/                 # 프로젝트 관련 문서 (기획서, PND, 시연영상 등)
 ├── frontend/                 # Frontend Source (React/Next.js)
 │   ├── node_modules/         # 프론트엔드 의존성 라이브러리
 │   ├── public/               # 정적 자산 (이미지, 파비콘 등)
 │   ├── src/                  # React 소스 코드 및 컴포넌트
 │   ├── .env(생략)            # 환경 변수 (보안 주의)
-│   └── .env.sample           # 환경 변수 샘플
-├── .env(생략)                # 환경 변수 설정 파일 (보안 주의)
-├── .env.sample               # 환경 변수 샘플 양식
-├── docker-compose.yml        # Docker 컨테이너 설정
-├── lifecycle.py              # 앱 생명주기 관리 (Startup/Shutdown)
-├── main.py                   # FastAPI 앱 실행 진입점
-├── README.md                 # 프로젝트 설명 문서
-└── requirements.txt          # 백엔드 라이브러리 의존성 목록
+│   ├── .env.sample           # 환경 변수 샘플
+│   ├── .gitignore            # github 업로드 제한 목록
+│   └── front_readme.md       # react(프론트엔드) 설명 문서
+├── .gitignore                # github 업로드 제한 목록
+└── README.md                 # 프로젝트 설명 문서
 ```
