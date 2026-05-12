@@ -17,6 +17,10 @@
 
 Antidote는 **RAG(Retrieval-Augmented Generation)** 패턴을 기반으로 설계되었으며, 데이터의 정확도와 추론의 신뢰성을 높이기 위해 다단계 아키텍처를 채택했습니다.
 
+<br>
+<img src="document/Antidote_Architecture.png" width="100%" alt="Antidote 아키텍처">
+<br>
+
 ### 1. Data Pipeline & Vector DB
 
 - **Legal Knowledge Base**: 근로기준법을 조/항/제 단위로 세분화하여 벡터화(Vectorization) 완료.
