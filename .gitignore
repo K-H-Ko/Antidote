@@ -26,3 +26,6 @@ model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터
 model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(5차)
 model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(6차)
 model_data/Law_Data/dataset(정제데이터)/Training_Set(label)/학습데이터(7차)
+
+# [graphify]
+graphify-out/.graphify*
